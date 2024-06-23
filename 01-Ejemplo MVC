@@ -1,0 +1,31 @@
+El Modelo-Vista-Controlador (MVC) es un patrón de diseño de software que separa la aplicación en tres componentes interconectados: el Modelo, la Vista y el Controlador. Este patrón ayuda a organizar el código de manera modular, facilitando el mantenimiento y la expansión de la aplicación.
+
+Este patrón MVC permite una clara separación de responsabilidades, haciendo que el código sea más fácil de entender, mantener y expandir. Cada componente del patrón MVC se centra en una única responsabilidad, lo que facilita la colaboración entre ellos y mejora la organización del proyecto.
+
+//cada url tiene un controlador asociado(PropiedadController) que buscará el método (index, crear o actualizar)
+$router->get('/admin', [new PropiedadController(), 'index']);
+$router->get('/propiedades/crear', [new PropiedadController(), 'crear']);
+$router->get('/propiedades/actualizar', [new PropiedadController(), 'actualizar']);
+
+
+//los métodos se han definido en el método index:
+
+class PropiedadController {
+    public static function index(Router $router) { //esto es el método
+        $propiedades = Propiedad::all(); // aquí realiza un llamado hacia la base de datos.
+        // El controlador guarda en la variable la información y se la pasa hacia la vista 
+       
+        $router->render('propiedades/admin', [
+            'propiedades' => $propiedades
+        ]);
+    }
+}
+
+Modelo
+El Modelo representa los datos y la lógica de negocio de la aplicación. En este ejemplo, Propiedad parece ser el Modelo, ya que interactúa directamente con la base de datos para obtener todas las propiedades (Propiedad::all()). El Modelo encapsula la lógica de acceso a datos, asegurando que la manipulación de estos datos se realice de manera segura y eficiente.
+
+Vista
+La Vista es responsable de presentar los datos al usuario. En este ejemplo, la Vista se encarga de renderizar el HTML que se mostrará al usuario. Esto se hace a través del método $router->render(), que probablemente genera HTML dinámico basándose en los datos pasados desde el Controlador. La Vista no debería contener ninguna lógica de negocio ni interactuar directamente con la base de datos.
+
+Controlador
+El Controlador actúa como intermediario entre el Modelo y la Vista. Gestiona la lógica de la aplicación, tomando entradas del usuario (por ejemplo, solicitudes HTTP), interactuando con el Modelo para recuperar o modificar datos, y luego pasando esos datos a la Vista para su representación. En este ejemplo, el PropiedadController es el Controlador. Define métodos como index, crear y actualizar que corresponden a diferentes acciones que pueden realizar los usuarios. Cada uno de estos métodos interactúa con el Modelo para obtener o modificar datos y luego pasa esos datos a la Vista para su representación.
