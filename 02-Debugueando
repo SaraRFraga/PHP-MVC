@@ -66,3 +66,14 @@ object(MVC\Router)#2 (2) {
     }
   }
 }
+
+
+  debuguear(CARPETA_IMAGENES);
+
+string(64) "/Users/sarar.fraga/Desktop/bienesRaicesMVC/includes/../imagenes/"
+
+  debuguear($_SERVER['DOCUMENT_ROOT']);
+
+string(49) "/Users/sarar.fraga/Desktop/bienesRaicesMVC/public"
+
+
