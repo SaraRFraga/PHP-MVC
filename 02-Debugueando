@@ -1,0 +1,68 @@
+  $fn = $this->rutasPOST[$urlActual] ?? null;
+  debuguear($_POST);
+
+array(1) {
+  ["propiedad"]=>
+  array(7) {
+    ["titulo"]=>
+    string(0) ""
+    ["precio"]=>
+    string(0) ""
+    ["descripcion"]=>
+    string(0) ""
+    ["habitaciones"]=>
+    string(0) ""
+    ["wc"]=>
+    string(0) ""
+    ["estacionamiento"]=>
+    string(0) ""
+    ["vendedores_id"]=>
+    string(0) ""
+  }
+}
+
+
+  $fn = $this->rutasPOST[$urlActual] ?? null;
+  debuguear($this); //aparecen las rutas y fuciones asociadas
+
+
+object(MVC\Router)#2 (2) {
+  ["rutasGET"]=>
+  array(3) {
+    ["/admin"]=>
+    array(2) {
+      [0]=>
+      object(Controllers\PropiedadController)#5 (0) {
+      }
+      [1]=>
+      string(5) "index"
+    }
+    ["/propiedades/crear"]=>
+    array(2) {
+      [0]=>
+      object(Controllers\PropiedadController)#6 (0) {
+      }
+      [1]=>
+      string(5) "crear"
+    }
+    ["/propiedades/actualizar"]=>
+    array(2) {
+      [0]=>
+      object(Controllers\PropiedadController)#8 (0) {
+      }
+      [1]=>
+      string(10) "actualizar"
+    }
+  }
+  ["rutasPOST"]=>
+  array(1) {
+    ["/propiedades/crear"]=>
+    array(2) {
+      [0]=>
+      object(Controllers\PropiedadController)#7 (0) {
+      }
+      [1]=>
+      string(5) "crear"
+    }
+  }
+}
