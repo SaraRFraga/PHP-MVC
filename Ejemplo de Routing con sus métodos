@@ -1,0 +1,36 @@
+El Routing es la funcionalidad de una aplicación MVC que indica que vistas tienen que ser manejadas por un determinado controlador. El routing nos permite personalizar esta ruta para introducir nuevos parámetros o URL`s en el controlador.
+
+// Zona Pública
+$router->get('/', [PaginasController::class,'index']);
+$router->get('/nosotros', [PaginasController::class,'nosotros']);
+$router->get('/propiedades', [PaginasController::class,'propiedades']);
+$router->get('/propiedad', [PaginasController::class,'propiedad']);
+$router->get('/blog', [PaginasController::class,'blog']);
+$router->get('/entrada', [PaginasController::class,'entrada']);
+$router->get('/contacto', [PaginasController::class,'contacto']);
+$router->post('/contacto', [PaginasController::class,'contacto']);
+
+//Métodos para este Routing:
+class PaginasController {
+    public static function index() {
+        echo "Desde Index";
+    }
+    public static function nosotros() {
+        echo "Desde nosotros";
+    }
+    public static function propiedades() {
+        echo "Desde Index";
+    }
+    public static function propiedad() {
+        echo "Desde Index";
+    }
+    public static function blog() {
+        echo "Desde Index";
+    }
+    public static function entrada() {
+        echo "Desde Index";
+    }
+    public static function contacto() {
+        echo "Desde Index";
+    }
+}
