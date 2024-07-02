@@ -1,0 +1,37 @@
+/* La página de contacto tiene dos ruteos, una get y el de post que pertenece al formulario
+GET: Solicitudes para recuperar información. Ideal para mostrar formularios o páginas estáticas.
+POST: Solicitudes para enviar información al servidor. Útil para procesar formularios.
+
+$router->get('/contacto', [PaginasController::class,'contacto']);
+$router->post('/contacto', [PaginasController::class,'contacto']);
+
+
+/* por lo tanto, debemos verificar el de Método en la función: comprobamos si la solicitud es de tipo POST para procesar los datos del formulario.
+
+public static function contacto( Router $router ) {
+    
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        debuguear($_POST);
+    }
+    $router->render('paginas/contacto');
+}
+
+
+/* El formulario HTML define varios campos para recoger información del usuario, como nombre, email, teléfono y mensaje. Es importante el uso de la etiqueta name para cada campo, ya que estos nombres son cruciales para identificar los datos en el backend cuando se envían los datos del formulario. También indicar que datos son de sumplimiento obligatorio con required
+
+<form class="formulario" action="/contacto" method="POST">
+    <fieldset>
+        <legend>Información Personal</legend>
+
+        <label for="nombre">Nombre</label>
+        <input type="text" placeholder="Tu Nombre" id="nombre" name="contacto[nombre]" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" placeholder="Tu Email" id="email" name="contacto[email]" required>
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" placeholder="Tu Teléfono" id="telefono" name="contacto[telefono]">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="contacto[mensaje]" required></textarea>
+    </fieldset>
+</form>
