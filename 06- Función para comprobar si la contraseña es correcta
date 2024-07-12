@@ -1,0 +1,20 @@
+public function comprobarPassword($resultado) {
+        $usuario = $resultado->fetch_assoc();
+        $auth = password_verify($this->password, $usuario['password']);
+
+        if($auth) {
+            // El usuario esta autenticado
+            session_start();
+
+            // Llenar el arreglo de la sesión
+            $_SESSION['usuario'] = $usuario['email'];
+            $_SESSION['login'] = true;
+            return true;
+        } else {
+            self::$errores[] = 'Password Incorrecto';
+            return [
+                false,
+                self::$errores
+            ];
+        }
+    }
