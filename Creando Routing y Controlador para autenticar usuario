@@ -1,0 +1,50 @@
+// Controlador
+
+<?php
+
+namespace Controllers;
+
+class LoginController {
+    public static function login() {
+        echo "Desde Login";
+    }
+    public static function logout() {
+        echo "Desde Logout";
+    }
+    public static function olvide() {
+        echo "Desde Olvide";
+    }
+    public static function recuperar() {
+        echo "Desde Recuperar";
+    }    
+    public static function crear() {
+        echo "Desde Crear";
+    }
+}
+
+// Routing
+
+<?php 
+
+require_once __DIR__ . '/../includes/app.php';
+
+use MVC\Router;
+use Controllers\LoginController;
+$router = new Router();
+
+// Iniciar y cerrar sesión
+$router->get('/', [LoginController::class, 'login']);
+$router->post('/', [LoginController::class, 'login']);
+
+// Recuperar contraseña
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
+$router->get('/recuperar', [LoginController::class, 'recuperar']);
+$router->post('/recuperar', [LoginController::class, 'recuperar']);
+
+// Crear cuenta
+$router->get('/crear-cuenta', [LoginController::class, 'crear']);
+$router->post('/crear-cuenta', [LoginController::class, 'crear']);
+
+// Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
+$router->comprobarRutas();
