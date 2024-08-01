@@ -1,0 +1,21 @@
+    // Mensajes de validación para la creación de una cuenta
+
+    public function validarNuevaCuenta() {
+        if(!$this->nombre) {
+            self::$alertas['error'][] = 'El Nombre es Obligatorio';
+        }
+        if(!$this->apellido) {
+            self::$alertas['error'][] = 'Los Apellidos son Obligatorios';
+        }
+        if(!$this->email) {
+            self::$alertas['error'][] = 'El Email es Obligatorio';
+        }
+        if(!$this->password) {
+            self::$alertas['error'][] = 'La Contraseña es Obligatorio';
+        }
+        if(strlen($this->password) < 6) {
+            self::$alertas['error'][] = 'La Contraseña debe contener al menos 6 caracteres';
+        }
+
+        return self::$alertas;
+    }
